@@ -71,7 +71,7 @@ echo "InvokeAI simple installer..."
 echo ""
 echo "Some of the installation steps take a long time to run. Please be patient."
 echo "If the script appears to hang for more than 10 minutes, please interrupt with control-C and retry."
-read -n 1 -s -r -p "<Press any key to start the install>"
+# read -n 1 -s -r -p "<Press any key to start the install>"
 echo ""
 
 OS_NAME=$(uname -s)
@@ -121,9 +121,12 @@ ROOTDIR=""
 while [ "$ROOTDIR" == "" ]
 do
     echo
-    readinput -e -p "Select your preferred location for the 'invokeai' directory [$HOME]: " -i $HOME input
+    # readinput -e -p "Select your preferred location for the 'invokeai' directory [$HOME]: " -i $HOME input
     ROOTDIR=${input:=$HOME}/invokeai
-    read -e -p "InvokeAI will be installed into $ROOTDIR. OK? [y]: " input
+    # read -e -p "InvokeAI will be installed into $ROOTDIR. OK? [y]: " input
+    # set default response to 'y'
+    input="y"
+
     RESPONSE=${input:='y'}
     if [ "$RESPONSE" == 'y' ]; then
 	if [ -e "$ROOTDIR" ]; then
@@ -176,7 +179,7 @@ else
 	egrep -v '^-e .' environments-and-requirements/requirements-lin-amd.txt >requirements.txt
     else
 	echo "Linux system detected. Installing CUDA and CPU support."
-	egrep -v '^-e .' environments-and-requirements/requirements-lin-cuda.txt >requirements.txt
+	egrep -v '^-e .' ../environments-and-requirements/requirements-lin-cuda.txt >requirements.txt
     fi
 fi
 
@@ -191,23 +194,30 @@ _err_exit $? "Installation of InvokeAI failed."
 
 #--------------------------------------------------------------------------------
 echo " *** Setting Up Root Directory "$ROOTDIR" *** "
-cp -pr templates/rootdir/* "$ROOTDIR"/
+# check if templates/rootdir exists, if not create it
+if [ ! -d templates/rootdir ]; then
+    mkdir templates/rootdir
+fi
+# mkdir templates/rootdir
+cp -pr templates/rootdir "$ROOTDIR"/
 cp templates/invoke.sh.in "$ROOTDIR"/invoke.sh
 chmod a+rx "$ROOTDIR"/invoke.sh
 cp templates/update.sh.in "$ROOTDIR"/update.sh
 chmod a+rx "$ROOTDIR"/update.sh
 
 # This allows the updater to work!
-cp -pr environments-and-requirements requirements.txt "$ROOTDIR/"
+cp -pr ../environments-and-requirements requirements.txt "$ROOTDIR/"
 
 #--------------------------------------------------------------------------------
 echo
 echo "*** Confguring InvokeAI ***"
 pushd "$ROOTDIR" >/dev/null
-$PYTHON ./.venv/bin/configure_invokeai.py --root="$ROOTDIR"
+cd /home/ubuntu/InvokeAI
+$PYTHON /home/ubuntu/invokeai/.venv/bin/configure_invokeai.py --root="/home/ubuntu/invokeai"
 _err_exit $? "Initial configuration failed. Please see above error messages and $TROUBLESHOOTING for help."
 
 #--------------------------------------------------------------------------------
+echo "Installation complete."
 popd
 cp templates/invoke.sh.in "$ROOTDIR"/invoke.sh
 chmod a+rx "$ROOTDIR"/invoke.sh

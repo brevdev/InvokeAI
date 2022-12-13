@@ -36,9 +36,9 @@ transformers.logging.set_verbosity_error()
 #--------------------------globals-----------------------
 Model_dir = 'models'
 Weights_dir = 'ldm/stable-diffusion-v1/'
-Dataset_path = './configs/INITIAL_MODELS.yaml'
-Default_config_file = './configs/models.yaml'
-SD_Configs = './configs/stable-diffusion'
+Dataset_path = '../configs/INITIAL_MODELS.yaml'
+Default_config_file = '../configs/models.yaml'
+SD_Configs = '../configs/stable-diffusion'
 
 assert os.path.exists(Dataset_path),"The configs directory cannot be found. Please run this script from within the invokeai runtime directory."
 
@@ -79,8 +79,10 @@ If you installed manually, activate the 'invokeai' environment
 commands to start InvokeAI.
 
 Web UI:
+    source /home/ubuntu/invokeai/.venv/bin/activate
     python scripts/invoke.py --web # (connect to http://localhost:9090)
 Command-line interface:
+    source /home/ubuntu/invokeai/.venv/bin/activate
    python scripts/invoke.py
 
 Have fun!

@@ -2,7 +2,7 @@
 
 set -eu
 
-. .venv/bin/activate
+. /home/ubuntu/invokeai/.venv/bin/activate
 
 # set required env var for torch on mac MPS
  if [ "$(uname -s)" == "Darwin" ]; then
@@ -20,11 +20,11 @@ read choice
 case $choice in
     1)
         printf "\nStarting the InvokeAI command-line..\n";
-        .venv/bin/python scripts/invoke.py $*;
+        /home/ubuntu/invokeai/.venv/bin/python scripts/invoke.py $*;
     ;;
     2)
         printf "\nStarting the InvokeAI browser-based UI..\n";
-        .venv/bin/python scripts/invoke.py --web $*;
+        /home/ubuntu/invokeai/.venv/bin/python scripts/invoke.py --web $*;
     ;;
     3)
         printf "\nDeveloper Console:\n";
