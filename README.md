@@ -76,7 +76,7 @@ diagnose issues faster._
 We've created a Brev template that'll pre-configure an Invoke environment for you. This will work out of the box. All you really need to do is run the install.sh script.
 1. Create a cloud dev environment with the config provided in this [link](https://console.brev.dev/environment/new?repo=https://github.com/brevdev/InvokeAI.git&instance=g5.2xlarge&diskStorage=70)
 2. Open your environment with the Brev CLI: ```brev open invokeai --wait```
-3. Run the install script: ```./installer/install.sh.in``` (We recommend sticking with the default options offered
+3. Run the install script: ```./installer/install.sh.in``` (We recommend sticking with the default options suggested)
 4. Cd into the generated directory: ```cd /home/ubuntu/invokeai```
 5. Run invoke: ```sh invoke.sh```
 
