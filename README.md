@@ -72,6 +72,9 @@ _Note: InvokeAI is rapidly evolving. Please use the
 make feature requests. Be sure to use the provided templates. They will help us
 diagnose issues faster._
 
+# Getting Started with InvokeAI (on Brev)
+1. Create a cloud dev environment with the config provided in this link: [https://console.brev.dev/environment/new?repo=https://github.com/brevdev/InvokeAI.git&instance=g5.2xlarge&diskStorage=70](https://console.brev.dev/environment/new?repo=https://github.com/brevdev/InvokeAI.git&instance=g5.2xlarge&diskStorage=70)
+
 # Getting Started with InvokeAI
 
 For full installation and upgrade instructions, please see:
