@@ -73,29 +73,12 @@ make feature requests. Be sure to use the provided templates. They will help us
 diagnose issues faster._
 
 # Getting Started with InvokeAI (on Brev)
-1. Create a cloud dev environment with the config provided in this link: [https://console.brev.dev/environment/new?repo=https://github.com/brevdev/InvokeAI.git&instance=g5.2xlarge&diskStorage=70](https://console.brev.dev/environment/new?repo=https://github.com/brevdev/InvokeAI.git&instance=g5.2xlarge&diskStorage=70)
-
-# Getting Started with InvokeAI
-
-For full installation and upgrade instructions, please see:
-[InvokeAI Installation Overview](https://invoke-ai.github.io/InvokeAI/installation/)
-
-1. Go to the bottom of the
-   [Latest Release Page](https://github.com/invoke-ai/InvokeAI/releases/tag/v2.2.3)
-2. Download the .zip file for your OS (Windows/macOS/Linux).
-3. Unzip the file.
-4. If you are on Windows, double-click on the `install.bat` script. On macOS,
-   open a Terminal window, drag the file `install.sh` from Finder into the
-   Terminal, and press return. On Linux, run `install.sh`.
-5. Wait a while, until it is done.
-6. The folder where you ran the installer from will now be filled with lots of
-   files. If you are on Windows, double-click on the `invoke.bat` file. On
-   macOS, open a Terminal window, drag `invoke.sh` from the folder into the
-   Terminal, and press return. On Linux, run `invoke.sh`
-7. Then run: source /home/ubuntu/invokeai/.venv/bin/activate
-8. Then python scripts/invoke.py --web
-
-<div align="center"><img src="docs/assets/invoke-web-server-1.png" width=640></div>
+We've created a Brev template that'll pre-configure an Invoke environment for you. This will work out of the box. All you really need to do is run the install.sh script.
+1. Create a cloud dev environment with the config provided in this [link](https://console.brev.dev/environment/new?repo=https://github.com/brevdev/InvokeAI.git&instance=g5.2xlarge&diskStorage=70)
+2. Open your environment with the Brev CLI: ```brev open invokeai --wait```
+3. Run the install script: ```./installer/install.sh.in``` (We recommend sticking with the default options offered
+4. Cd into the generated directory: ```cd /home/ubuntu/invokeai```
+5. Run invoke: ```sh invoke.sh```
 
 ## Table of Contents
 
